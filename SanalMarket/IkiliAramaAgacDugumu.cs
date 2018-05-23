@@ -8,20 +8,22 @@ namespace SanalMarket
 {
     public class IkiliAramaAgacDugumu
     {
-        public object veri;
+        public AltKategoriler veri;
+        public Heap urunler;
         public IkiliAramaAgacDugumu sol;
         public IkiliAramaAgacDugumu sag;
+
 
         public IkiliAramaAgacDugumu()
         {
         }
 
-        public IkiliAramaAgacDugumu(object veri)
+        public IkiliAramaAgacDugumu(AltKategoriler altkategori, Heap urun)
         {
-            this.veri = veri;
+            veri = altkategori;
+            urunler = urun;
             sol = null;
             sag = null;
         }
-
     }
 }

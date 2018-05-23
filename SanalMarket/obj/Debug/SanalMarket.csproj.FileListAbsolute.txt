@@ -1,0 +1,10 @@
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\bin\Debug\SanalMarket.exe.config
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\bin\Debug\SanalMarket.exe
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\bin\Debug\SanalMarket.pdb
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.csprojResolveAssemblyReference.cache
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.frm_AnaEkran.resources
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.Properties.Resources.resources
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.csproj.GenerateResource.Cache
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.csproj.CoreCompileInputs.cache
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.exe
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.pdb

@@ -22,7 +22,7 @@ namespace SanalMarket
             this.kok = kok;
         }
 
-        public void Ekle(int deger)
+        public void AltKategoriEkle(AltKategoriler altKategori, Heap urunler)
         {
             //Yeni eklenecek düğümün parent'ı
             IkiliAramaAgacDugumu tempParent = new IkiliAramaAgacDugumu();
@@ -33,22 +33,24 @@ namespace SanalMarket
             {
                 tempParent = tempSearch;
                 //Deger zaten var, çık.
-                if (deger == (int)tempSearch.veri)
+                if (altKategori.urunSayisi == tempSearch.veri.urunSayisi)
                     return;
-                else if (deger < (int)tempSearch.veri)
+                else if (altKategori.urunSayisi < tempSearch.veri.urunSayisi)
                     tempSearch = tempSearch.sol;
                 else
                     tempSearch = tempSearch.sag;
             }
-            IkiliAramaAgacDugumu eklenecek = new IkiliAramaAgacDugumu(deger);
+
+            IkiliAramaAgacDugumu eklenecek = new IkiliAramaAgacDugumu(altKategori,urunler);
             //Ağaç boş, köke ekle
             if (kok == null)
                 kok = eklenecek;
-            else if (deger < (int)tempParent.veri)
+
+            else if (altKategori.urunSayisi < tempParent.veri.urunSayisi)
                 tempParent.sol = eklenecek;
+
             else
                 tempParent.sag = eklenecek;
         }
-
     }
 }
