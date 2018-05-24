@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mst_Kategori = new System.Windows.Forms.MenuStrip();
             this.btn_Olustur = new System.Windows.Forms.Button();
             this.txt_Marka = new System.Windows.Forms.TextBox();
             this.txt_Model = new System.Windows.Forms.TextBox();
@@ -44,16 +43,9 @@
             this.pCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dizüstüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masaüstüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPersonelGiris = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mst_Kategori
-            // 
-            this.mst_Kategori.Location = new System.Drawing.Point(0, 24);
-            this.mst_Kategori.Name = "mst_Kategori";
-            this.mst_Kategori.Size = new System.Drawing.Size(551, 24);
-            this.mst_Kategori.TabIndex = 0;
-            this.mst_Kategori.Text = "menuStrip1";
             // 
             // btn_Olustur
             // 
@@ -148,7 +140,7 @@
             this.kategoriToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(551, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(897, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -157,8 +149,8 @@
             this.kategoriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pCToolStripMenuItem});
             this.kategoriToolStripMenuItem.Name = "kategoriToolStripMenuItem";
-            this.kategoriToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.kategoriToolStripMenuItem.Text = "kategori";
+            this.kategoriToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.kategoriToolStripMenuItem.Text = "Kategori";
             // 
             // pCToolStripMenuItem
             // 
@@ -181,11 +173,22 @@
             this.masaüstüToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.masaüstüToolStripMenuItem.Text = "Masaüstü";
             // 
+            // btnPersonelGiris
+            // 
+            this.btnPersonelGiris.Location = new System.Drawing.Point(800, 0);
+            this.btnPersonelGiris.Name = "btnPersonelGiris";
+            this.btnPersonelGiris.Size = new System.Drawing.Size(97, 24);
+            this.btnPersonelGiris.TabIndex = 7;
+            this.btnPersonelGiris.Text = "Personel Girişi";
+            this.btnPersonelGiris.UseVisualStyleBackColor = true;
+            this.btnPersonelGiris.Click += new System.EventHandler(this.btnPersonelGiris_Click);
+            // 
             // frm_AnaEkran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 262);
+            this.ClientSize = new System.Drawing.Size(897, 315);
+            this.Controls.Add(this.btnPersonelGiris);
             this.Controls.Add(this.btn_Ekle);
             this.Controls.Add(this.cmb_AltKategori);
             this.Controls.Add(this.cmb_Kategori);
@@ -196,11 +199,10 @@
             this.Controls.Add(this.txt_Model);
             this.Controls.Add(this.txt_Marka);
             this.Controls.Add(this.btn_Olustur);
-            this.Controls.Add(this.mst_Kategori);
             this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.mst_Kategori;
             this.Name = "frm_AnaEkran";
             this.Text = "Ana Ekran";
+            this.Load += new System.EventHandler(this.frm_AnaEkran_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -209,8 +211,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip mst_Kategori;
         private System.Windows.Forms.Button btn_Olustur;
         private System.Windows.Forms.TextBox txt_Marka;
         private System.Windows.Forms.TextBox txt_Model;
@@ -226,6 +226,7 @@
         private System.Windows.Forms.ToolStripMenuItem pCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dizüstüToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem masaüstüToolStripMenuItem;
+        private System.Windows.Forms.Button btnPersonelGiris;
     }
 }
 

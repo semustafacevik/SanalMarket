@@ -17,6 +17,8 @@ namespace SanalMarket
         static Heap masaustu = new Heap(50);
         static Heap buzdolabi = new Heap(50);
 
+        HashMap hashTablosu = new HashMap();
+
         public frm_AnaEkran()
         {
             InitializeComponent();
@@ -42,6 +44,7 @@ namespace SanalMarket
             be_altk1.urunSayisi = 0;
 
             Urun urun1 = new Urun();
+            urun1.urunKodu = 0;
             urun1.marka = "Samsung";
             urun1.model = 2000;
             urun1.miktar = 10;
@@ -53,6 +56,7 @@ namespace SanalMarket
             pc_altk1.urunSayisi++;
 
             Urun urun2 = new Urun();
+            urun2.urunKodu = 1;
             urun2.marka = "Toshiba";
             urun2.model = 2005;
             urun2.miktar = 30;
@@ -63,8 +67,8 @@ namespace SanalMarket
             urun2.hangiAltkatta = "Masaüstü";
             pc_altk2.urunSayisi++;
 
-
             Urun urun3 = new Urun();
+            urun3.urunKodu = 2;
             urun3.marka = "Asus";
             urun3.model = 2015;
             urun3.miktar = 4;
@@ -75,8 +79,8 @@ namespace SanalMarket
             urun3.hangiAltkatta = "Masaüstü";
             pc_altk2.urunSayisi++;
 
-
             Urun urun4 = new Urun();
+            urun4.urunKodu = 3;
             urun4.marka = "Xiaomi";
             urun4.model = 2017;
             urun4.miktar = 8;
@@ -87,9 +91,8 @@ namespace SanalMarket
             urun4.hangiAltkatta = "Masaüstü";
             pc_altk2.urunSayisi++;
 
-
-
             Urun urun5 = new Urun();
+            urun5.urunKodu = 4;
             urun5.marka = "Bosch";
             urun5.model = 2017;
             urun5.miktar = 81;
@@ -117,6 +120,16 @@ namespace SanalMarket
 
             market.AgacEkle(bilgisayarAgaci);
             market.AgacEkle(beyazEsyaAgaci);
+
+            hashTablosu.UrunEkleme(urun1.urunKodu, urun1);
+            hashTablosu.UrunEkleme(urun2.urunKodu, urun2);
+            hashTablosu.UrunEkleme(urun3.urunKodu, urun3);
+            hashTablosu.UrunEkleme(urun4.urunKodu, urun4);
+            hashTablosu.UrunEkleme(urun5.urunKodu, urun5);
+
+
+
+            //hashTablosu.GetUrun(urun1.miktar);
         }
 
         private void btn_Ekle_Click(object sender, EventArgs e)
@@ -135,6 +148,24 @@ namespace SanalMarket
             //bilgisayarAgaci.Ekle(yeniUrun);
 
             market.AgacEkle(bilgisayarAgaci);
+
+        }
+
+        private void frm_AnaEkran_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnPersonelGiris_Click(object sender, EventArgs e)
+        {
+            frm_PersonelGirisi frm = new frm_PersonelGirisi();
+            frm.ShowDialog();
+            this.Hide();
 
         }
     }

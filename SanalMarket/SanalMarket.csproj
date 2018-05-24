@@ -52,16 +52,66 @@
     <Compile Include="AnaEkran.Designer.cs">
       <DependentUpon>AnaEkran.cs</DependentUpon>
     </Compile>
+    <Compile Include="HashEntry.cs" />
+    <Compile Include="HashMap.cs" />
     <Compile Include="HeapDugumu.cs" />
     <Compile Include="Heap.cs" />
     <Compile Include="IkiliAramaAgacDugumu.cs" />
     <Compile Include="IkiliAramaAgaci.cs" />
+    <Compile Include="KategoriEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KategoriEkle.Designer.cs">
+      <DependentUpon>KategoriEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaliRapor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaliRapor.Designer.cs">
+      <DependentUpon>MaliRapor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Market.cs" />
+    <Compile Include="PersonelEkrani.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelEkrani.Designer.cs">
+      <DependentUpon>PersonelEkrani.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelGirisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelGirisi.Designer.cs">
+      <DependentUpon>PersonelGirisi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Urun.cs" />
+    <Compile Include="UrunGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UrunGuncelle.Designer.cs">
+      <DependentUpon>UrunGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UrunSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UrunSil.Designer.cs">
+      <DependentUpon>UrunSil.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AnaEkran.resx">
       <DependentUpon>AnaEkran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KategoriEkle.resx">
+      <DependentUpon>KategoriEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaliRapor.resx">
+      <DependentUpon>MaliRapor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelEkrani.resx">
+      <DependentUpon>PersonelEkrani.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelGirisi.resx">
+      <DependentUpon>PersonelGirisi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -72,6 +122,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UrunGuncelle.resx">
+      <DependentUpon>UrunGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UrunSil.resx">
+      <DependentUpon>UrunSil.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
