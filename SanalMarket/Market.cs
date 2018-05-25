@@ -9,7 +9,7 @@ namespace SanalMarket
 {
     public class Market
     {
-        ArrayList kategoriListesi = new ArrayList();
+        public ArrayList kategoriListesi = new ArrayList();
 
         public void AgacEkle(IkiliAramaAgaci yeniAgac)
         {

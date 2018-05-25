@@ -8,6 +8,7 @@ namespace SanalMarket
 {
     public class IkiliAramaAgacDugumu
     {
+        public string dugumAdi;
         public AltKategoriler veri;
         public Heap urunler;
         public IkiliAramaAgacDugumu sol;

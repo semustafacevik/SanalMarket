@@ -17,6 +17,8 @@ namespace SanalMarket
             InitializeComponent();
         }
 
+        public Market market;
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -34,7 +36,8 @@ namespace SanalMarket
             if (Kullanici == "AytugOnan" && sifre == "******")
             {
                 this.Hide();
-                PersonelEkrani frm = new PersonelEkrani();
+                frm_PersonelEkrani frm = new frm_PersonelEkrani();
+                frm.market = this.market;
                 frm.Show();
             }
             else

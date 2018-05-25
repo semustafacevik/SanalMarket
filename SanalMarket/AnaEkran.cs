@@ -32,75 +32,85 @@ namespace SanalMarket
         private void btn_Olustur_Click(object sender, EventArgs e)
         {
             AltKategoriler pc_altk1 = new AltKategoriler();
-            pc_altk1.adi = "Dizüstü Bilgisayar";
-            pc_altk1.urunSayisi = 0;
+            pc_altk1.adi = "Dizüstü";
+            pc_altk1.dugumNo = 4;
 
             AltKategoriler pc_altk2 = new AltKategoriler();
-            pc_altk2.adi = "Masaüstü Bilgisayar";
-            pc_altk2.urunSayisi = 0;
+            pc_altk2.adi = "Masaüstü";
+            pc_altk2.dugumNo = 6;
 
             AltKategoriler be_altk1 = new AltKategoriler();
             be_altk1.adi = "Buzdolabı";
-            be_altk1.urunSayisi = 0;
+            be_altk1.dugumNo = 1;
 
-            Urun urun1 = new Urun();
-            urun1.urunKodu = 0;
-            urun1.marka = "Samsung";
-            urun1.model = 2000;
-            urun1.miktar = 10;
-            urun1.maliyet = 1500;
-            urun1.satisFiyati = 2000;
-            urun1.urunAciklamasi = "Temiz, doktordan...";
-            urun1.hangiKategoride = "Bilgisayar";
-            urun1.hangiAltkatta = "Dizüstü";
+            Urun urun1 = new Urun
+            {
+                urunKodu = 0,
+                marka = "Samsung",
+                model = 2000,
+                miktar = 10,
+                maliyet = 1500,
+                satisFiyati = 2000,
+                urunAciklamasi = "Temiz, doktordan...",
+                hangiKategoride = "Bilgisayar",
+                hangiAltkategoride = "Dizüstü"
+            };
             pc_altk1.urunSayisi++;
 
-            Urun urun2 = new Urun();
-            urun2.urunKodu = 1;
-            urun2.marka = "Toshiba";
-            urun2.model = 2005;
-            urun2.miktar = 30;
-            urun2.maliyet = 1600;
-            urun2.satisFiyati = 2100;
-            urun2.urunAciklamasi = "Temiz, avukattan...";
-            urun2.hangiKategoride = "Bilgisayar";
-            urun2.hangiAltkatta = "Masaüstü";
+            Urun urun2 = new Urun
+            {
+                urunKodu = 1,
+                marka = "Toshiba",
+                model = 2005,
+                miktar = 30,
+                maliyet = 1600,
+                satisFiyati = 2100,
+                urunAciklamasi = "Temiz, avukattan...",
+                hangiKategoride = "Bilgisayar",
+                hangiAltkategoride = "Masaüstü"
+            };
             pc_altk2.urunSayisi++;
 
-            Urun urun3 = new Urun();
-            urun3.urunKodu = 2;
-            urun3.marka = "Asus";
-            urun3.model = 2015;
-            urun3.miktar = 4;
-            urun3.maliyet = 2600;
-            urun3.satisFiyati = 2900;
-            urun3.urunAciklamasi = "Temiz, bakkaldan...";
-            urun3.hangiKategoride = "Bilgisayar";
-            urun3.hangiAltkatta = "Masaüstü";
+            Urun urun3 = new Urun
+            {
+                urunKodu = 2,
+                marka = "Asus",
+                model = 2015,
+                miktar = 4,
+                maliyet = 2600,
+                satisFiyati = 2900,
+                urunAciklamasi = "Temiz, bakkaldan...",
+                hangiKategoride = "Bilgisayar",
+                hangiAltkategoride = "Masaüstü"
+            };
             pc_altk2.urunSayisi++;
 
-            Urun urun4 = new Urun();
-            urun4.urunKodu = 3;
-            urun4.marka = "Xiaomi";
-            urun4.model = 2017;
-            urun4.miktar = 8;
-            urun4.maliyet = 1300;
-            urun4.satisFiyati = 1800;
-            urun4.urunAciklamasi = "Çinden, tertemiz...";
-            urun4.hangiKategoride = "Bilgisayar";
-            urun4.hangiAltkatta = "Masaüstü";
+            Urun urun4 = new Urun
+            {
+                urunKodu = 3,
+                marka = "Xiaomi",
+                model = 2017,
+                miktar = 8,
+                maliyet = 1300,
+                satisFiyati = 1800,
+                urunAciklamasi = "Çinden, tertemiz...",
+                hangiKategoride = "Bilgisayar",
+                hangiAltkategoride = "Masaüstü"
+            };
             pc_altk2.urunSayisi++;
 
-            Urun urun5 = new Urun();
-            urun5.urunKodu = 4;
-            urun5.marka = "Bosch";
-            urun5.model = 2017;
-            urun5.miktar = 81;
-            urun5.maliyet = 1350;
-            urun5.satisFiyati = 1900;
-            urun5.urunAciklamasi = "temiz...";
-            urun5.hangiKategoride = "Beyaz Eşya";
-            urun5.hangiAltkatta = "Buzdolabı";
+            Urun urun5 = new Urun
+            {
+                urunKodu = 51,
+                marka = "Bosch",
+                model = 2017,
+                miktar = 81,
+                maliyet = 1350,
+                satisFiyati = 1900,
+                urunAciklamasi = "temiz...",
+                hangiKategoride = "Beyaz Eşya",
+                hangiAltkategoride = "Buzdolabı"
+            };
             be_altk1.urunSayisi++;
 
 
@@ -110,12 +120,14 @@ namespace SanalMarket
             masaustu.Insert(urun4);
 
             bilgisayarAgaci = new IkiliAramaAgaci();
+            bilgisayarAgaci.kategoriAdi = "Bilgisayar";
             bilgisayarAgaci.AltKategoriEkle(pc_altk1,dizustu);
             bilgisayarAgaci.AltKategoriEkle(pc_altk2, masaustu);
 
             buzdolabi.Insert(urun5);
 
             beyazEsyaAgaci = new IkiliAramaAgaci();
+            beyazEsyaAgaci.kategoriAdi = "Beyaz Eşya";
             beyazEsyaAgaci.AltKategoriEkle(be_altk1, buzdolabi);
 
             market.AgacEkle(bilgisayarAgaci);
@@ -164,9 +176,15 @@ namespace SanalMarket
         private void btnPersonelGiris_Click(object sender, EventArgs e)
         {
             frm_PersonelGirisi frm = new frm_PersonelGirisi();
+            frm.market = this.market;
             frm.ShowDialog();
             this.Hide();
 
+        }
+
+        private void btn_Bul_Click(object sender, EventArgs e)
+        {
+            txt_Goster.Text = hashTablosu.UrunBulma(Convert.ToInt32(txt_Bul.Text)).marka;
         }
     }
 }

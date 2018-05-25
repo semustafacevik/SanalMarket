@@ -1,6 +1,6 @@
 ﻿namespace SanalMarket
 {
-    partial class PersonelEkrani
+    partial class frm_PersonelEkrani
     {
         /// <summary>
         /// Required designer variable.
@@ -49,6 +49,8 @@
             this.lblUrunAciklama = new System.Windows.Forms.Label();
             this.cmbKategoriSecim = new System.Windows.Forms.ComboBox();
             this.btnUrunuEkle = new System.Windows.Forms.Button();
+            this.cmb_AltKatBilg = new System.Windows.Forms.ComboBox();
+            this.cmb_AltKatBEsya = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -216,10 +218,11 @@
             "Bahçe",
             "Tekstil",
             "Yiyecek"});
-            this.cmbKategoriSecim.Location = new System.Drawing.Point(12, 104);
+            this.cmbKategoriSecim.Location = new System.Drawing.Point(115, 118);
             this.cmbKategoriSecim.Name = "cmbKategoriSecim";
             this.cmbKategoriSecim.Size = new System.Drawing.Size(121, 21);
             this.cmbKategoriSecim.TabIndex = 19;
+            this.cmbKategoriSecim.SelectedIndexChanged += new System.EventHandler(this.cmbKategoriSecim_SelectedIndexChanged);
             // 
             // btnUrunuEkle
             // 
@@ -229,12 +232,38 @@
             this.btnUrunuEkle.TabIndex = 20;
             this.btnUrunuEkle.Text = "Ürünü Ekle";
             this.btnUrunuEkle.UseVisualStyleBackColor = true;
+            this.btnUrunuEkle.Click += new System.EventHandler(this.btnUrunuEkle_Click);
             // 
-            // PersonelEkrani
+            // cmb_AltKatBilg
+            // 
+            this.cmb_AltKatBilg.FormattingEnabled = true;
+            this.cmb_AltKatBilg.Items.AddRange(new object[] {
+            "Dizüstü",
+            "Masaüstü"});
+            this.cmb_AltKatBilg.Location = new System.Drawing.Point(267, 118);
+            this.cmb_AltKatBilg.Name = "cmb_AltKatBilg";
+            this.cmb_AltKatBilg.Size = new System.Drawing.Size(121, 21);
+            this.cmb_AltKatBilg.TabIndex = 21;
+            this.cmb_AltKatBilg.SelectedIndexChanged += new System.EventHandler(this.cmb_AltKatBilg_SelectedIndexChanged);
+            // 
+            // cmb_AltKatBEsya
+            // 
+            this.cmb_AltKatBEsya.FormattingEnabled = true;
+            this.cmb_AltKatBEsya.Items.AddRange(new object[] {
+            "Buzdolabı"});
+            this.cmb_AltKatBEsya.Location = new System.Drawing.Point(335, 118);
+            this.cmb_AltKatBEsya.Name = "cmb_AltKatBEsya";
+            this.cmb_AltKatBEsya.Size = new System.Drawing.Size(121, 21);
+            this.cmb_AltKatBEsya.TabIndex = 22;
+            this.cmb_AltKatBEsya.SelectedIndexChanged += new System.EventHandler(this.cmb_AltKatBEsya_SelectedIndexChanged);
+            // 
+            // frm_PersonelEkrani
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 382);
+            this.Controls.Add(this.cmb_AltKatBEsya);
+            this.Controls.Add(this.cmb_AltKatBilg);
             this.Controls.Add(this.btnUrunuEkle);
             this.Controls.Add(this.cmbKategoriSecim);
             this.Controls.Add(this.lblUrunAciklama);
@@ -254,9 +283,8 @@
             this.Controls.Add(this.btnUrunSil);
             this.Controls.Add(this.btnKategoriEkle);
             this.Controls.Add(this.btnUrunEkle);
-            this.Name = "PersonelEkrani";
+            this.Name = "frm_PersonelEkrani";
             this.Text = "PersonelEkrani";
-            this.Load += new System.EventHandler(this.PersonelEkrani_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +312,7 @@
         public System.Windows.Forms.Label lblSatisFiyati;
         public System.Windows.Forms.Label lblUrunAciklama;
         public System.Windows.Forms.Button btnUrunuEkle;
+        public System.Windows.Forms.ComboBox cmb_AltKatBilg;
+        public System.Windows.Forms.ComboBox cmb_AltKatBEsya;
     }
 }

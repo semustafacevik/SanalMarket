@@ -10,11 +10,8 @@ namespace SanalMarket
     {
         public string adi;
         public int urunSayisi;
+        public int dugumNo;
         HashMap hashMap = new HashMap();
         
-        public void UrunEkle(Urun yeniUrun, string adi)
-        {
-
-        }
     }
 }

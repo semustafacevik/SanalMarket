@@ -16,6 +16,6 @@ namespace SanalMarket
         public int satisFiyati;
         public string urunAciklamasi;
         public string hangiKategoride;
-        public string hangiAltkatta;
+        public string hangiAltkategoride;
     }
 }

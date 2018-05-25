@@ -40,3 +40,9 @@ C:\Users\MustafaCevik\Desktop\y_SanalMarket\SanalMarket\obj\Debug\SanalMarket.cs
 C:\Users\MustafaCevik\Desktop\y_SanalMarket\SanalMarket\obj\Debug\SanalMarket.csproj.CoreCompileInputs.cache
 C:\Users\MustafaCevik\Desktop\y_SanalMarket\SanalMarket\obj\Debug\SanalMarket.exe
 C:\Users\MustafaCevik\Desktop\y_SanalMarket\SanalMarket\obj\Debug\SanalMarket.pdb
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.frm_KategoriEkle.resources
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.frm_MaliRapor.resources
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.frm_PersonelGirisi.resources
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.frm_UrunGuncelle.resources
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.frm_UrunSil.resources
+C:\Users\MustafaCevik\source\repos\SanalMarket\SanalMarket\obj\Debug\SanalMarket.frm_PersonelEkrani.resources

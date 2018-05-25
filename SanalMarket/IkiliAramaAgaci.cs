@@ -11,6 +11,7 @@ namespace SanalMarket
 
         private IkiliAramaAgacDugumu kok;
         private string dugumler;
+        public string kategoriAdi;
 
         public IkiliAramaAgaci()
         {
@@ -52,5 +53,24 @@ namespace SanalMarket
             else
                 tempParent.sag = eklenecek;
         }
+
+        public IkiliAramaAgacDugumu Ara(int anahtar)
+        {
+            return AraInt(kok, anahtar);
+        }
+        private IkiliAramaAgacDugumu AraInt(IkiliAramaAgacDugumu dugum,int anahtar)
+        {
+            if (dugum == null)
+                return null;
+            else if ((int)dugum.veri.dugumNo == anahtar)
+                return dugum;
+            else if ((int)dugum.veri.dugumNo > anahtar)
+                return (AraInt(dugum.sol, anahtar));
+            else
+                return (AraInt(dugum.sag, anahtar));
+        }
+
+
+
     }
 }
