@@ -34,7 +34,7 @@ namespace SanalMarket
             Kullanici = txtKullaniciAdi.Text;
             sifre = txtSifre.Text;
 
-            if (Kullanici == "AytugOnan" && sifre == "******")
+            if (Kullanici == "Admin" && sifre == "******")
             {
                 
                 frm_PersonelEkrani personelEkrani = new frm_PersonelEkrani();

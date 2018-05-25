@@ -45,7 +45,7 @@
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Size = new System.Drawing.Size(149, 27);
             this.txtKullaniciAdi.TabIndex = 0;
-            this.txtKullaniciAdi.Text = "AytugOnan";
+            this.txtKullaniciAdi.Text = "Admin";
             this.txtKullaniciAdi.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtSifre

@@ -56,13 +56,15 @@
             this.btn_EnUcuzSA = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnPersonelGiris
             // 
-            this.btnPersonelGiris.Location = new System.Drawing.Point(793, 0);
+            this.btnPersonelGiris.Location = new System.Drawing.Point(786, 0);
             this.btnPersonelGiris.Name = "btnPersonelGiris";
-            this.btnPersonelGiris.Size = new System.Drawing.Size(104, 40);
+            this.btnPersonelGiris.Size = new System.Drawing.Size(111, 40);
             this.btnPersonelGiris.TabIndex = 7;
             this.btnPersonelGiris.Text = "Personel Girişi";
             this.btnPersonelGiris.UseVisualStyleBackColor = true;
@@ -258,7 +260,7 @@
             "Bilgisayar",
             "Beyaz Eşya",
             "Giyim"});
-            this.cmb_Kategori.Location = new System.Drawing.Point(484, 169);
+            this.cmb_Kategori.Location = new System.Drawing.Point(488, 169);
             this.cmb_Kategori.Name = "cmb_Kategori";
             this.cmb_Kategori.Size = new System.Drawing.Size(121, 21);
             this.cmb_Kategori.TabIndex = 36;
@@ -316,12 +318,34 @@
             this.label2.TabIndex = 39;
             this.label2.Text = "Min - Max Değerleri Arası Ürünler";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(108, 225);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(210, 20);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "En Ucuz Ürünleri Satın Alma";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(83, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(278, 20);
+            this.label4.TabIndex = 39;
+            this.label4.Text = "Modeline Göre Ürün Bulup Satın Alma";
+            // 
             // frm_AnaEkran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 376);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_EnUcuzSA);
             this.Controls.Add(this.txt_KacTane);
@@ -385,6 +409,8 @@
         private System.Windows.Forms.Button btn_EnUcuzSA;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 
