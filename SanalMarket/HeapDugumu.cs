@@ -13,5 +13,9 @@ namespace SanalMarket
         {
             this.Deger = deger;
         }
+
+        public HeapDugumu()
+        {
+        }
     }
 }

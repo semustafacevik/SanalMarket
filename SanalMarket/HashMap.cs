@@ -11,6 +11,7 @@ namespace SanalMarket
         int TABLE_SIZE = 50;
         HashEntry[] hashTable;
         public bool bulunduMu;
+        public List<Urun> urunler = new List<Urun>();
 
         public HashMap()
         {
@@ -30,6 +31,8 @@ namespace SanalMarket
             while (hashTable[hash] != null && hashTable[hash].UrunKodu != urunAnahtari)
                 hash = (hash + 1) % TABLE_SIZE;
             hashTable[hash] = new HashEntry(urunAnahtari, yeniUrun);
+
+            urunler.Add(yeniUrun);
         }
         public Urun UrunBulma(string urunAdi)
         {
@@ -54,8 +57,6 @@ namespace SanalMarket
 
         public void UrunSilme(string urunAdi)
         {
-            // Urun bulunan = UrunBulma(urunAdi);
-
             int urunAnahtari = 0;
             for (int i = 0; i < urunAdi.Length; i++)
             {
@@ -68,10 +69,6 @@ namespace SanalMarket
 
             hashTable[hash] = null;
         }
-
-
-
-        // hashTable[10].
     }
 }
 
