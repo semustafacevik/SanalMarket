@@ -279,7 +279,7 @@ namespace SanalMarket
             AltKategoriler yeniAltKat = new AltKategoriler();
             yeniAltKat.adi = txt_AltKat.Text;
             yeniAltKat.dugumNumarasi = yeniAltKat.AgacSiralamasiIcinNo(yeniAltKat.adi);
-            yeniAgac.AltKategoriEkle(yeniAltKat, null);
+            yeniAgac.AltKategoriEkle(yeniAltKat, null, null);
 
             market.AgacEkle(yeniAgac);
 

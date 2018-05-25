@@ -12,6 +12,7 @@ namespace SanalMarket
         public string dugumAdi;
         public AltKategoriler veri;
         public ArrayList urunler;
+        public Heap siraliUrunler;
         public IkiliAramaAgacDugumu sol;
         public IkiliAramaAgacDugumu sag;
 
@@ -20,10 +21,11 @@ namespace SanalMarket
         {
         }
 
-        public IkiliAramaAgacDugumu(AltKategoriler altkategori, ArrayList urun)
+        public IkiliAramaAgacDugumu(AltKategoriler altkategori, ArrayList urun, Heap siraliUrun)
         {
             veri = altkategori;
             urunler = urun;
+            siraliUrunler = siraliUrun;
             sol = null;
             sag = null;
         }

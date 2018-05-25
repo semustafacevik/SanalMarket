@@ -23,6 +23,14 @@ namespace SanalMarket
 
         HashMap ana_hashTablosu = new HashMap();
 
+        Heap minHeapDiz = new Heap(50);
+        Heap minHeapMas = new Heap(50);
+        Heap minHeapOyu = new Heap(50);
+        Heap minHeapBuz = new Heap(50);
+        Heap minHeapCam = new Heap(50);
+        Heap minHeapGom = new Heap(50);
+        Heap minHeapPan = new Heap(50);
+
         public frm_AnaEkran()
         {
             InitializeComponent();
@@ -213,23 +221,35 @@ namespace SanalMarket
             gomlek.Add(urun9);
             pantolon.Add(urun10);
 
+            minHeapDiz.insert(urun1);
+            minHeapMas.insert(urun2);
+            minHeapMas.insert(urun3);
+            minHeapMas.insert(urun4);
+            minHeapOyu.insert(urun5);
+            minHeapOyu.insert(urun6);
+            minHeapBuz.insert(urun7);
+            minHeapCam.insert(urun8);
+            minHeapGom.insert(urun9);
+            minHeapPan.insert(urun10);
+
+
             bilgisayarAgaci = new IkiliAramaAgaci();
             bilgisayarAgaci.kategoriAdi = "Bilgisayar";
-            bilgisayarAgaci.AltKategoriEkle(altk1, dizustu);
-            bilgisayarAgaci.AltKategoriEkle(altk2, masaustu);
-            bilgisayarAgaci.AltKategoriEkle(altk3, oyun);
+            bilgisayarAgaci.AltKategoriEkle(altk1, dizustu, minHeapDiz);
+            bilgisayarAgaci.AltKategoriEkle(altk2, masaustu, minHeapMas);
+            bilgisayarAgaci.AltKategoriEkle(altk3, oyun, minHeapOyu);
 
 
             beyazEsyaAgaci = new IkiliAramaAgaci();
             beyazEsyaAgaci.kategoriAdi = "Beyaz Eşya";
-            beyazEsyaAgaci.AltKategoriEkle(altk4, buzdolabi);
-            beyazEsyaAgaci.AltKategoriEkle(altk5, camasir);
+            beyazEsyaAgaci.AltKategoriEkle(altk4, buzdolabi, minHeapBuz);
+            beyazEsyaAgaci.AltKategoriEkle(altk5, camasir, minHeapCam);
 
 
             giyimAgaci = new IkiliAramaAgaci();
             giyimAgaci.kategoriAdi = "Giyim";
-            giyimAgaci.AltKategoriEkle(altk6, gomlek);
-            giyimAgaci.AltKategoriEkle(altk7, pantolon);
+            giyimAgaci.AltKategoriEkle(altk6, gomlek, minHeapGom);
+            giyimAgaci.AltKategoriEkle(altk7, pantolon, minHeapPan);
 
 
             ana_market.AgacEkle(bilgisayarAgaci);
