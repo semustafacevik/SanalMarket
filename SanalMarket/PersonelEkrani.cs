@@ -19,7 +19,7 @@ namespace SanalMarket
         }
         public void GerekliGizlemeler()
         {
-            cmbKategoriSecim.Hide();
+            cmb_KategoriSecim.Hide();
             lblMarka.Hide();
             lblModel.Hide();
             lblMiktar.Hide();
@@ -35,10 +35,11 @@ namespace SanalMarket
             btnUrunuEkle.Hide();
             cmb_AltKatBilg.Hide();
             cmb_AltKatBEsya.Hide();
+            cmb_AltKatGym.Hide();
         }
         public void GizlileriGoster()
         {
-            cmbKategoriSecim.Show();
+            cmb_KategoriSecim.Show();
             lblMarka.Show();
             lblModel.Show();
             lblMiktar.Show();
@@ -65,7 +66,7 @@ namespace SanalMarket
         {
             Urun yeniUrun = new Urun();
             yeniUrun.marka = txtMarka.Text;
-            yeniUrun.model = Convert.ToInt32(txtModel.Text);
+            yeniUrun.model = txtModel.Text;
             yeniUrun.miktar = Convert.ToInt32(txtMiktar.Text);
             yeniUrun.maliyet = Convert.ToInt32(txtMaliyet.Text);
             yeniUrun.satisFiyati = Convert.ToInt32(txtSatisFiyati.Text);
@@ -73,7 +74,7 @@ namespace SanalMarket
 
             foreach (IkiliAramaAgaci kategori in market.kategoriListesi)
             {
-                if(kategori.kategoriAdi == hangiKat)
+                if(kategori.kategoriAdi == hangiKategori)
                 {
                     kategori.Ara(agactakiDugumNosu).urunler.Insert(yeniUrun);
                 }
@@ -81,7 +82,7 @@ namespace SanalMarket
 
         }
 
-        string hangiKat;
+        string hangiKategori;
 
         private void KategoriBelirleme(string kategori)
         {
@@ -90,34 +91,36 @@ namespace SanalMarket
                 case "Bilgisayar":
                     cmb_AltKatBilg.Show();
                     cmb_AltKatBEsya.Hide();
-                    hangiKat = "Bilgisayar";
+                    cmb_AltKatGym.Hide();
                     break;
 
                 case "Beyaz Eşya":
-                    cmb_AltKatBilg.Hide();
                     cmb_AltKatBEsya.Show();
-                    hangiKat = "Beyaz Eşya";
+                    cmb_AltKatBilg.Hide();
+                    cmb_AltKatGym.Hide();
                     break;
 
                 default:
+                    cmb_AltKatGym.Show();
+                    cmb_AltKatBilg.Hide();
+                    cmb_AltKatBEsya.Hide();
                     break;
             }
         }
 
-        string hangiAltkat;
         private void cmbKategoriSecim_SelectedIndexChanged(object sender, EventArgs e)
         {
-            hangiAltkat = cmbKategoriSecim.SelectedItem.ToString();
-            KategoriBelirleme(hangiAltkat);
+            hangiKategori = cmb_KategoriSecim.SelectedItem.ToString();
+            KategoriBelirleme(hangiKategori);
         }
 
-        string hangiAltKat;
+        string hangiAltKategori;
         int agactakiDugumNosu;
         private void cmb_AltKatBilg_SelectedIndexChanged(object sender, EventArgs e)
         {
-            hangiAltKat = cmb_AltKatBilg.SelectedItem.ToString();
+            hangiAltKategori = cmb_AltKatBilg.SelectedItem.ToString();
 
-            switch (hangiAltkat)
+            switch (hangiAltKategori)
             {
                 case "Dizüstü":
                     agactakiDugumNosu = 4;
@@ -128,6 +131,7 @@ namespace SanalMarket
                     break;
 
                 default:
+                    agactakiDugumNosu = 2;
                     break;
             }
 
@@ -135,17 +139,43 @@ namespace SanalMarket
 
         private void cmb_AltKatBEsya_SelectedIndexChanged(object sender, EventArgs e)
         {
-            hangiAltKat = cmb_AltKatBEsya.SelectedItem.ToString();
+            hangiAltKategori = cmb_AltKatBEsya.SelectedItem.ToString();
 
-            switch (hangiAltKat)
+            switch (hangiAltKategori)
             {
                 case "Buzdolabı":
                     agactakiDugumNosu = 1;
                     break;
 
                 default:
+                    agactakiDugumNosu = 3;
                     break;
             }
+        }
+
+        private void cmb_AltKatGym_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hangiAltKategori = cmb_AltKatGym.SelectedItem.ToString();
+
+            switch (hangiAltKategori)
+            {
+                case "Gömlek":
+                    agactakiDugumNosu = 8;
+                    break;
+
+                default:
+                    agactakiDugumNosu = 11;
+                    break;
+            }
+
+        }
+
+        private void btn_UrunSil_Click(object sender, EventArgs e)
+        {
+            frm_UrunSil silmeFormu = new frm_UrunSil();
+            silmeFormu.market = this.market;
+            silmeFormu.StartPosition = FormStartPosition.CenterParent;
+            silmeFormu.ShowDialog();
         }
     }
 }

@@ -34,9 +34,9 @@ namespace SanalMarket
             {
                 tempParent = tempSearch;
                 //Deger zaten var, çık.
-                if (altKategori.urunSayisi == tempSearch.veri.urunSayisi)
+                if (altKategori.dugumNo == tempSearch.veri.dugumNo)
                     return;
-                else if (altKategori.urunSayisi < tempSearch.veri.urunSayisi)
+                else if (altKategori.dugumNo < tempSearch.veri.dugumNo)
                     tempSearch = tempSearch.sol;
                 else
                     tempSearch = tempSearch.sag;
@@ -47,7 +47,7 @@ namespace SanalMarket
             if (kok == null)
                 kok = eklenecek;
 
-            else if (altKategori.urunSayisi < tempParent.veri.urunSayisi)
+            else if (altKategori.dugumNo < tempParent.veri.dugumNo)
                 tempParent.sol = eklenecek;
 
             else

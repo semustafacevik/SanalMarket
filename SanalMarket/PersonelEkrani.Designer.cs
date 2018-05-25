@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnUrunEkle = new System.Windows.Forms.Button();
             this.btnKategoriEkle = new System.Windows.Forms.Button();
-            this.btnUrunSil = new System.Windows.Forms.Button();
+            this.btn_UrunSil = new System.Windows.Forms.Button();
             this.btnUrunGuncelle = new System.Windows.Forms.Button();
             this.btnMaliRapor = new System.Windows.Forms.Button();
             this.txtMarka = new System.Windows.Forms.TextBox();
@@ -47,16 +45,12 @@
             this.lblMaliyet = new System.Windows.Forms.Label();
             this.lblSatisFiyati = new System.Windows.Forms.Label();
             this.lblUrunAciklama = new System.Windows.Forms.Label();
-            this.cmbKategoriSecim = new System.Windows.Forms.ComboBox();
+            this.cmb_KategoriSecim = new System.Windows.Forms.ComboBox();
             this.btnUrunuEkle = new System.Windows.Forms.Button();
             this.cmb_AltKatBilg = new System.Windows.Forms.ComboBox();
             this.cmb_AltKatBEsya = new System.Windows.Forms.ComboBox();
+            this.cmb_AltKatGym = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // btnUrunEkle
             // 
@@ -77,14 +71,15 @@
             this.btnKategoriEkle.Text = "Kategori Ekle";
             this.btnKategoriEkle.UseVisualStyleBackColor = true;
             // 
-            // btnUrunSil
+            // btn_UrunSil
             // 
-            this.btnUrunSil.Location = new System.Drawing.Point(327, 12);
-            this.btnUrunSil.Name = "btnUrunSil";
-            this.btnUrunSil.Size = new System.Drawing.Size(138, 50);
-            this.btnUrunSil.TabIndex = 4;
-            this.btnUrunSil.Text = "Ürün Sil";
-            this.btnUrunSil.UseVisualStyleBackColor = true;
+            this.btn_UrunSil.Location = new System.Drawing.Point(327, 12);
+            this.btn_UrunSil.Name = "btn_UrunSil";
+            this.btn_UrunSil.Size = new System.Drawing.Size(138, 50);
+            this.btn_UrunSil.TabIndex = 4;
+            this.btn_UrunSil.Text = "Ürün Sil";
+            this.btn_UrunSil.UseVisualStyleBackColor = true;
+            this.btn_UrunSil.Click += new System.EventHandler(this.btn_UrunSil_Click);
             // 
             // btnUrunGuncelle
             // 
@@ -206,23 +201,18 @@
             this.lblUrunAciklama.TabIndex = 18;
             this.lblUrunAciklama.Text = "Ürün Açıklama";
             // 
-            // cmbKategoriSecim
+            // cmb_KategoriSecim
             // 
-            this.cmbKategoriSecim.FormattingEnabled = true;
-            this.cmbKategoriSecim.Items.AddRange(new object[] {
+            this.cmb_KategoriSecim.FormattingEnabled = true;
+            this.cmb_KategoriSecim.Items.AddRange(new object[] {
             "Bilgisayar",
             "Beyaz Eşya",
-            "Giyim",
-            "Kırtasiye/Ofis",
-            "YapıMarket",
-            "Bahçe",
-            "Tekstil",
-            "Yiyecek"});
-            this.cmbKategoriSecim.Location = new System.Drawing.Point(115, 118);
-            this.cmbKategoriSecim.Name = "cmbKategoriSecim";
-            this.cmbKategoriSecim.Size = new System.Drawing.Size(121, 21);
-            this.cmbKategoriSecim.TabIndex = 19;
-            this.cmbKategoriSecim.SelectedIndexChanged += new System.EventHandler(this.cmbKategoriSecim_SelectedIndexChanged);
+            "Giyim"});
+            this.cmb_KategoriSecim.Location = new System.Drawing.Point(115, 118);
+            this.cmb_KategoriSecim.Name = "cmb_KategoriSecim";
+            this.cmb_KategoriSecim.Size = new System.Drawing.Size(121, 21);
+            this.cmb_KategoriSecim.TabIndex = 19;
+            this.cmb_KategoriSecim.SelectedIndexChanged += new System.EventHandler(this.cmbKategoriSecim_SelectedIndexChanged);
             // 
             // btnUrunuEkle
             // 
@@ -239,7 +229,8 @@
             this.cmb_AltKatBilg.FormattingEnabled = true;
             this.cmb_AltKatBilg.Items.AddRange(new object[] {
             "Dizüstü",
-            "Masaüstü"});
+            "Masaüstü",
+            "Oyun"});
             this.cmb_AltKatBilg.Location = new System.Drawing.Point(267, 118);
             this.cmb_AltKatBilg.Name = "cmb_AltKatBilg";
             this.cmb_AltKatBilg.Size = new System.Drawing.Size(121, 21);
@@ -250,22 +241,36 @@
             // 
             this.cmb_AltKatBEsya.FormattingEnabled = true;
             this.cmb_AltKatBEsya.Items.AddRange(new object[] {
-            "Buzdolabı"});
-            this.cmb_AltKatBEsya.Location = new System.Drawing.Point(335, 118);
+            "Buzdolabı",
+            "Çamaşır"});
+            this.cmb_AltKatBEsya.Location = new System.Drawing.Point(267, 118);
             this.cmb_AltKatBEsya.Name = "cmb_AltKatBEsya";
             this.cmb_AltKatBEsya.Size = new System.Drawing.Size(121, 21);
             this.cmb_AltKatBEsya.TabIndex = 22;
             this.cmb_AltKatBEsya.SelectedIndexChanged += new System.EventHandler(this.cmb_AltKatBEsya_SelectedIndexChanged);
             // 
+            // cmb_AltKatGym
+            // 
+            this.cmb_AltKatGym.FormattingEnabled = true;
+            this.cmb_AltKatGym.Items.AddRange(new object[] {
+            "Gömlek",
+            "Pantolon"});
+            this.cmb_AltKatGym.Location = new System.Drawing.Point(267, 118);
+            this.cmb_AltKatGym.Name = "cmb_AltKatGym";
+            this.cmb_AltKatGym.Size = new System.Drawing.Size(121, 21);
+            this.cmb_AltKatGym.TabIndex = 23;
+            this.cmb_AltKatGym.SelectedIndexChanged += new System.EventHandler(this.cmb_AltKatGym_SelectedIndexChanged);
+            // 
             // frm_PersonelEkrani
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 382);
+            this.ClientSize = new System.Drawing.Size(813, 382);
+            this.Controls.Add(this.cmb_AltKatGym);
             this.Controls.Add(this.cmb_AltKatBEsya);
             this.Controls.Add(this.cmb_AltKatBilg);
             this.Controls.Add(this.btnUrunuEkle);
-            this.Controls.Add(this.cmbKategoriSecim);
+            this.Controls.Add(this.cmb_KategoriSecim);
             this.Controls.Add(this.lblUrunAciklama);
             this.Controls.Add(this.lblSatisFiyati);
             this.Controls.Add(this.lblMaliyet);
@@ -280,7 +285,7 @@
             this.Controls.Add(this.txtMarka);
             this.Controls.Add(this.btnMaliRapor);
             this.Controls.Add(this.btnUrunGuncelle);
-            this.Controls.Add(this.btnUrunSil);
+            this.Controls.Add(this.btn_UrunSil);
             this.Controls.Add(this.btnKategoriEkle);
             this.Controls.Add(this.btnUrunEkle);
             this.Name = "frm_PersonelEkrani";
@@ -291,14 +296,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnUrunEkle;
         private System.Windows.Forms.Button btnKategoriEkle;
-        private System.Windows.Forms.Button btnUrunSil;
+        private System.Windows.Forms.Button btn_UrunSil;
         private System.Windows.Forms.Button btnUrunGuncelle;
         private System.Windows.Forms.Button btnMaliRapor;
-        public System.Windows.Forms.ComboBox cmbKategoriSecim;
+        public System.Windows.Forms.ComboBox cmb_KategoriSecim;
         public System.Windows.Forms.TextBox txtMarka;
         public System.Windows.Forms.TextBox txtModel;
         public System.Windows.Forms.TextBox txtMiktar;
@@ -314,5 +317,6 @@
         public System.Windows.Forms.Button btnUrunuEkle;
         public System.Windows.Forms.ComboBox cmb_AltKatBilg;
         public System.Windows.Forms.ComboBox cmb_AltKatBEsya;
+        public System.Windows.Forms.ComboBox cmb_AltKatGym;
     }
 }

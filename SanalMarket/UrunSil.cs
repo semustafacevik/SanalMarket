@@ -16,5 +16,20 @@ namespace SanalMarket
         {
             InitializeComponent();
         }
+
+        public Market market;
+
+        private void btn_Sil_Click(object sender, EventArgs e)
+        {
+            string silincekMarka = txt_SilinecekUrun.Text;
+
+            foreach (IkiliAramaAgaci kategori in market.kategoriListesi)
+            //{
+            //    if (kategori.kategoriAdi == hangiKategori)
+            //    {
+            //        kategori.Ara(agactakiDugumNosu).urunler.;
+            //    }
+            //}
+        }
     }
 }

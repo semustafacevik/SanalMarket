@@ -10,7 +10,7 @@ namespace SanalMarket
     {
         public int urunKodu;
         public string marka;
-        public int model;
+        public string model;
         public int miktar;
         public int maliyet;
         public int satisFiyati;
