@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace SanalMarket
     {
         public string dugumAdi;
         public AltKategoriler veri;
-        public Heap urunler;
+        public ArrayList urunler;
         public IkiliAramaAgacDugumu sol;
         public IkiliAramaAgacDugumu sag;
 
@@ -19,7 +20,7 @@ namespace SanalMarket
         {
         }
 
-        public IkiliAramaAgacDugumu(AltKategoriler altkategori, Heap urun)
+        public IkiliAramaAgacDugumu(AltKategoriler altkategori, ArrayList urun)
         {
             veri = altkategori;
             urunler = urun;

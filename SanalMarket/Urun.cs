@@ -8,7 +8,6 @@ namespace SanalMarket
 {
     public class Urun
     {
-        public int urunKodu;
         public string marka;
         public string model;
         public int miktar;

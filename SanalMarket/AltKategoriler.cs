@@ -9,9 +9,17 @@ namespace SanalMarket
     public class AltKategoriler
     {
         public string adi;
-        public int dugumNo;
+        public int dugumNumarasi;
 
-        HashMap hashMap = new HashMap(); //////////////////7****
-        
+        public int AgacSiralamasiIcinNo(string urunAdi)
+        {
+            int urunAnahtari = 0;
+            for (int i = 0; i < urunAdi.Length; i++)
+            {
+                urunAnahtari += Convert.ToInt32(urunAdi[i]);
+            }
+
+            return urunAnahtari;
+        }
     }
 }

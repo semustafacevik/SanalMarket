@@ -16,8 +16,9 @@ namespace SanalMarket
         {
             InitializeComponent();
             GerekliGizlemeler();
+            grb_Kategori.Hide();
         }
-        public void GerekliGizlemeler()
+        private void GerekliGizlemeler()
         {
             cmb_KategoriSecim.Hide();
             lblMarka.Hide();
@@ -32,14 +33,18 @@ namespace SanalMarket
             txtMaliyet.Hide();
             txtSatisFiyati.Hide();
             txtUrunAciklama.Hide();
-            btnUrunuEkle.Hide();
+            btn_UrunEkle.Hide();
+            btn_UrunSil.Hide();
+            btn_UrunGuncelle.Hide();
             cmb_AltKatBilg.Hide();
             cmb_AltKatBEsya.Hide();
             cmb_AltKatGym.Hide();
+            txt_UrunAra.Hide();
+            btn_UrunAra.Hide();
+            grb_Kategori.Hide();
         }
-        public void GizlileriGoster()
+        private void GizlileriGoster()
         {
-            cmb_KategoriSecim.Show();
             lblMarka.Show();
             lblModel.Show();
             lblMiktar.Show();
@@ -52,17 +57,44 @@ namespace SanalMarket
             txtMaliyet.Show();
             txtSatisFiyati.Show();
             txtUrunAciklama.Show();
-            btnUrunuEkle.Show();
         }
 
-       public Market market;
+        public Market market;
+        public HashMap hashTablosu;
+        Urun bulunanUrun;
+        string arananUrun;
 
-        private void btnUrunEkle_Click(object sender, EventArgs e)
+        private void AnaMenudekiUrunEklemeyeTiklama(object sender, EventArgs e)
         {
+            GerekliGizlemeler();
             GizlileriGoster();
+            cmb_KategoriSecim.Show();
+            btn_UrunEkle.Show();
         }
 
-        private void btnUrunuEkle_Click(object sender, EventArgs e)
+        private void AnaMenudekiUrunSilmeyeTiklama(object sender, EventArgs e)
+        {
+            GerekliGizlemeler();
+            GizlileriGoster();
+
+            btn_UrunSil.Show();
+            txt_UrunAra.Show();
+            btn_UrunAra.Show();
+        }
+
+        private void AnaMenudekiUrunGuncelleyeTiklama(object sender, EventArgs e)
+        {
+            GerekliGizlemeler();
+            GizlileriGoster();
+
+            btn_UrunGuncelle.Show();
+            txt_UrunAra.Show();
+            btn_UrunAra.Show();
+        }
+
+
+
+        private void UrunEklemeyeTiklama(object sender, EventArgs e)
         {
             Urun yeniUrun = new Urun();
             yeniUrun.marka = txtMarka.Text;
@@ -71,19 +103,122 @@ namespace SanalMarket
             yeniUrun.maliyet = Convert.ToInt32(txtMaliyet.Text);
             yeniUrun.satisFiyati = Convert.ToInt32(txtSatisFiyati.Text);
             yeniUrun.urunAciklamasi = txtUrunAciklama.Text;
+            yeniUrun.hangiKategoride = hangiKategori;
+            yeniUrun.hangiAltkategoride = hangiAltKategori;
 
             foreach (IkiliAramaAgaci kategori in market.kategoriListesi)
             {
-                if(kategori.kategoriAdi == hangiKategori)
+                if (kategori.kategoriAdi == hangiKategori)
                 {
-                    kategori.Ara(agactakiDugumNosu).urunler.Insert(yeniUrun);
+                    kategori.Ara(hangiAltKategori).urunler.Add(yeniUrun);
+
+                    hashTablosu.UrunEkleme(yeniUrun.model, yeniUrun);
                 }
-            }    
+            }
 
         }
 
-        string hangiKategori;
+        private void UrunSileTiklama(object sender, EventArgs e)
+        {
+            arananUrun = txt_UrunAra.Text;
 
+            if (hashTablosu.bulunduMu)
+            {
+                if (bulunanUrun != null)
+                {
+                    foreach (IkiliAramaAgaci kategori in market.kategoriListesi)
+                    {
+                        if (kategori.kategoriAdi == bulunanUrun.hangiKategoride)
+                        {
+                            kategori.Ara(bulunanUrun.hangiAltkategoride).urunler.Remove(bulunanUrun);
+
+                            hashTablosu.UrunSilme(bulunanUrun.model);
+                            MessageBox.Show(bulunanUrun.urunAciklamasi + " silindi.");
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("Ürün bulunamadi");
+            }
+            else
+                MessageBox.Show("Ürün bulunamadi");
+
+        }
+
+        private void UrunArayaTiklama(object sender, EventArgs e)
+        {
+            arananUrun = txt_UrunAra.Text;
+
+            bulunanUrun = hashTablosu.UrunBulma(arananUrun);
+
+            if (hashTablosu.bulunduMu)
+            {
+                if (bulunanUrun != null)
+                {
+                    MessageBox.Show(bulunanUrun.urunAciklamasi + " bulundu.");
+
+                    txtMarka.Text = bulunanUrun.marka;
+                    txtModel.Text = bulunanUrun.model;
+                    txtMiktar.Text = (bulunanUrun.miktar).ToString();
+                    txtMaliyet.Text = (bulunanUrun.maliyet).ToString();
+                    txtSatisFiyati.Text = (bulunanUrun.satisFiyati).ToString();
+                    txtUrunAciklama.Text = (bulunanUrun.urunAciklamasi).ToString();
+                }
+                else
+                    MessageBox.Show("Ürün bulunamadı.");
+            }
+
+            else
+                MessageBox.Show("Ürün bulunamadı.");
+        }
+
+        private void UrunGuncelleyeTiklama(object sender, EventArgs e)
+        {
+            if (hashTablosu.bulunduMu)
+            {
+                if (bulunanUrun != null)
+                {
+                    foreach (IkiliAramaAgaci kategori in market.kategoriListesi)
+                    {
+                        if (kategori.kategoriAdi == bulunanUrun.hangiKategoride)
+                        {
+                            Urun yeniUrun = new Urun();
+                            yeniUrun.marka = txtMarka.Text;
+                            yeniUrun.model = txtModel.Text;
+                            yeniUrun.miktar = Convert.ToInt32(txtMiktar.Text);
+                            yeniUrun.maliyet = Convert.ToInt32(txtMaliyet.Text);
+                            yeniUrun.satisFiyati = Convert.ToInt32(txtSatisFiyati.Text);
+                            yeniUrun.urunAciklamasi = txtUrunAciklama.Text;
+                            yeniUrun.hangiKategoride = bulunanUrun.hangiKategoride;
+                            yeniUrun.hangiAltkategoride = bulunanUrun.hangiAltkategoride;
+
+                            kategori.Ara(bulunanUrun.hangiAltkategoride).urunler.Remove(bulunanUrun);
+
+                            kategori.Ara(bulunanUrun.hangiAltkategoride).urunler.Add(yeniUrun);
+
+                            hashTablosu.UrunSilme(bulunanUrun.model);
+
+                            hashTablosu.UrunEkleme(yeniUrun.model, yeniUrun);
+
+                            MessageBox.Show(yeniUrun.urunAciklamasi + " güncellendi");
+                        }
+
+                    }
+                }
+                else
+                    MessageBox.Show("Ürün bulunamadi");
+            }
+            else
+                MessageBox.Show("Ürün bulunamadi");
+        }
+
+
+        string hangiKategori;
+        private void cmb_KategoriSecim_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hangiKategori = cmb_KategoriSecim.SelectedItem.ToString();
+            KategoriBelirleme(hangiKategori);
+        }
         private void KategoriBelirleme(string kategori)
         {
             switch (kategori)
@@ -108,74 +243,49 @@ namespace SanalMarket
             }
         }
 
-        private void cmbKategoriSecim_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            hangiKategori = cmb_KategoriSecim.SelectedItem.ToString();
-            KategoriBelirleme(hangiKategori);
-        }
-
         string hangiAltKategori;
-        int agactakiDugumNosu;
         private void cmb_AltKatBilg_SelectedIndexChanged(object sender, EventArgs e)
         {
             hangiAltKategori = cmb_AltKatBilg.SelectedItem.ToString();
-
-            switch (hangiAltKategori)
-            {
-                case "Dizüstü":
-                    agactakiDugumNosu = 4;
-                    break;
-
-                case "Masaüstü":
-                    agactakiDugumNosu = 6;
-                    break;
-
-                default:
-                    agactakiDugumNosu = 2;
-                    break;
-            }
-
         }
-
         private void cmb_AltKatBEsya_SelectedIndexChanged(object sender, EventArgs e)
         {
             hangiAltKategori = cmb_AltKatBEsya.SelectedItem.ToString();
-
-            switch (hangiAltKategori)
-            {
-                case "Buzdolabı":
-                    agactakiDugumNosu = 1;
-                    break;
-
-                default:
-                    agactakiDugumNosu = 3;
-                    break;
-            }
         }
-
         private void cmb_AltKatGym_SelectedIndexChanged(object sender, EventArgs e)
         {
             hangiAltKategori = cmb_AltKatGym.SelectedItem.ToString();
-
-            switch (hangiAltKategori)
-            {
-                case "Gömlek":
-                    agactakiDugumNosu = 8;
-                    break;
-
-                default:
-                    agactakiDugumNosu = 11;
-                    break;
-            }
-
         }
 
-        private void btn_UrunSil_Click(object sender, EventArgs e)
+
+
+        private void MaliRaporaTiklama(object sender, EventArgs e)
         {
-            frm_UrunSil silmeFormu = new frm_UrunSil();
-            silmeFormu.market = this.market;
-            silmeFormu.StartPosition = FormStartPosition.CenterParent;
-            silmeFormu.ShowDialog();
+            MessageBox.Show("Toplam satılan ürün sayısı :  " + market.satilanUrunsayisi +
+                             Environment.NewLine + "Toplam kar :  " + market.toplamKar);
+        }
+
+        private void KategoriEkleyeTiklama(object sender, EventArgs e)
+        {
+            GerekliGizlemeler();
+            grb_Kategori.Show();           
+        }
+
+        private void btn_KatEkle_Click(object sender, EventArgs e)
+        {
+            IkiliAramaAgaci yeniAgac = new IkiliAramaAgaci();
+            yeniAgac.kategoriAdi = txt_Kategori.Text;
+
+            AltKategoriler yeniAltKat = new AltKategoriler();
+            yeniAltKat.adi = txt_AltKat.Text;
+            yeniAltKat.dugumNumarasi = yeniAltKat.AgacSiralamasiIcinNo(yeniAltKat.adi);
+            yeniAgac.AltKategoriEkle(yeniAltKat, null);
+
+            market.AgacEkle(yeniAgac);
+
+            grb_Kategori.Hide();
+            MessageBox.Show(yeniAgac.kategoriAdi + " kategorisi eklendi");
         }
     }
 }
+

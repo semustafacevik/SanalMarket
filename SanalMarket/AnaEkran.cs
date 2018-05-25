@@ -13,20 +13,21 @@ namespace SanalMarket
 {
     public partial class frm_AnaEkran : Form
     {
-        static Heap dizustu = new Heap(50);
-        static Heap masaustu = new Heap(50);
-        static Heap oyun = new Heap(50);
-        static Heap buzdolabi = new Heap(50);
-        static Heap camasir = new Heap(50);
-        static Heap gomlek = new Heap(50);
-        static Heap pantolon = new Heap(50);
+        ArrayList dizustu = new ArrayList();
+        ArrayList masaustu = new ArrayList();
+        ArrayList oyun = new ArrayList();
+        ArrayList buzdolabi = new ArrayList();
+        ArrayList camasir = new ArrayList();
+        ArrayList gomlek = new ArrayList();
+        ArrayList pantolon = new ArrayList();
 
-        HashMap hashTablosu = new HashMap();
+        HashMap ana_hashTablosu = new HashMap();
 
         public frm_AnaEkran()
         {
             InitializeComponent();
             VerilerinEklenmesi();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         IkiliAramaAgaci bilgisayarAgaci;
@@ -37,51 +38,52 @@ namespace SanalMarket
 
         private void btnPersonelGiris_Click(object sender, EventArgs e)
         {
-            frm_PersonelGirisi frm = new frm_PersonelGirisi();
-            frm.market = this.ana_market;
-            frm.ShowDialog();
-            this.Hide();
-
+            frm_PersonelGirisi personelGirisformu = new frm_PersonelGirisi();
+            personelGirisformu.StartPosition = FormStartPosition.CenterParent;
+            personelGirisformu.market = this.ana_market;
+            personelGirisformu.hashTablosu = this.ana_hashTablosu;
+            personelGirisformu.ShowDialog();
         }
 
-        private void btn_Bul_Click(object sender, EventArgs e)
-        {
-            txt_Goster.Text = hashTablosu.UrunBulma(Convert.ToInt32(txt_Bul.Text)).marka;
-        }
+
 
         private void VerilerinEklenmesi()
         {
             AltKategoriler altk1 = new AltKategoriler();
             altk1.adi = "Dizüstü";
-            altk1.dugumNo = 4;
+            altk1.dugumNumarasi = altk1.AgacSiralamasiIcinNo(altk1.adi);
+
 
             AltKategoriler altk2 = new AltKategoriler();
             altk2.adi = "Masaüstü";
-            altk2.dugumNo = 6;
+            altk2.dugumNumarasi = altk2.AgacSiralamasiIcinNo(altk2.adi);
 
             AltKategoriler altk3 = new AltKategoriler();
             altk3.adi = "Oyun";
-            altk3.dugumNo = 2;
+            altk3.dugumNumarasi = altk3.AgacSiralamasiIcinNo(altk3.adi);
 
             AltKategoriler altk4 = new AltKategoriler();
             altk4.adi = "Buzdolabı";
-            altk4.dugumNo = 5;
+            altk4.dugumNumarasi = altk4.AgacSiralamasiIcinNo(altk4.adi);
+
 
             AltKategoriler altk5 = new AltKategoriler();
             altk5.adi = "Çamaşır Makinesi";
-            altk5.dugumNo = 3;
+            altk5.dugumNumarasi = altk5.AgacSiralamasiIcinNo(altk5.adi);
+
 
             AltKategoriler altk6 = new AltKategoriler();
             altk6.adi = "Gömlek";
-            altk6.dugumNo = 8;
+            altk6.dugumNumarasi = altk6.AgacSiralamasiIcinNo(altk6.adi);
+
 
             AltKategoriler altk7 = new AltKategoriler();
             altk7.adi = "Pantolon";
-            altk7.dugumNo = 11;
+            altk7.dugumNumarasi = altk7.AgacSiralamasiIcinNo(altk7.adi);
+
 
             Urun urun1 = new Urun
             {
-                urunKodu = 0,
                 marka = "Samsung",
                 model = "L4",
                 miktar = 10,
@@ -94,7 +96,6 @@ namespace SanalMarket
 
             Urun urun2 = new Urun
             {
-                urunKodu = 1,
                 marka = "Toshiba",
                 model = "T350",
                 miktar = 30,
@@ -107,7 +108,6 @@ namespace SanalMarket
 
             Urun urun3 = new Urun
             {
-                urunKodu = 4,
                 marka = "Asus",
                 model = "LL66",
                 miktar = 4,
@@ -120,7 +120,6 @@ namespace SanalMarket
 
             Urun urun4 = new Urun
             {
-                urunKodu = 7,
                 marka = "Xiaomi",
                 model = "XL8",
                 miktar = 8,
@@ -133,7 +132,6 @@ namespace SanalMarket
 
             Urun urun5 = new Urun
             {
-                urunKodu = 51,
                 marka = "Monster",
                 model = "MX826",
                 miktar = 18,
@@ -146,7 +144,6 @@ namespace SanalMarket
 
             Urun urun6 = new Urun
             {
-                urunKodu = 84,
                 marka = "Msi",
                 model = "ML7462",
                 miktar = 24,
@@ -159,7 +156,6 @@ namespace SanalMarket
 
             Urun urun7 = new Urun
             {
-                urunKodu = 16,
                 marka = "Bosch",
                 model = "NF845",
                 miktar = 32,
@@ -172,7 +168,6 @@ namespace SanalMarket
 
             Urun urun8 = new Urun
             {
-                urunKodu = 45,
                 marka = "Vestel",
                 model = "V89",
                 miktar = 34,
@@ -185,7 +180,6 @@ namespace SanalMarket
 
             Urun urun9 = new Urun
             {
-                urunKodu = 210,
                 marka = "Tudors",
                 model = "SF12",
                 miktar = 53,
@@ -198,7 +192,6 @@ namespace SanalMarket
 
             Urun urun10 = new Urun
             {
-                urunKodu = 44,
                 marka = "Mavi",
                 model = "MA38",
                 miktar = 42,
@@ -209,16 +202,16 @@ namespace SanalMarket
                 hangiAltkategoride = "Pantolon"
             };
 
-            dizustu.Insert(urun1);
-            masaustu.Insert(urun2);
-            masaustu.Insert(urun3);
-            masaustu.Insert(urun4);
-            oyun.Insert(urun5);
-            oyun.Insert(urun6);
-            buzdolabi.Insert(urun7);
-            camasir.Insert(urun8);
-            gomlek.Insert(urun9);
-            pantolon.Insert(urun10);
+            dizustu.Add(urun1);
+            masaustu.Add(urun2);
+            masaustu.Add(urun3);
+            masaustu.Add(urun4);
+            oyun.Add(urun5);
+            oyun.Add(urun6);
+            buzdolabi.Add(urun7);
+            camasir.Add(urun8);
+            gomlek.Add(urun9);
+            pantolon.Add(urun10);
 
             bilgisayarAgaci = new IkiliAramaAgaci();
             bilgisayarAgaci.kategoriAdi = "Bilgisayar";
@@ -243,16 +236,49 @@ namespace SanalMarket
             ana_market.AgacEkle(beyazEsyaAgaci);
             ana_market.AgacEkle(giyimAgaci);
 
-            hashTablosu.UrunEkleme(urun1.urunKodu, urun1);
-            hashTablosu.UrunEkleme(urun2.urunKodu, urun2);
-            hashTablosu.UrunEkleme(urun3.urunKodu, urun3);
-            hashTablosu.UrunEkleme(urun4.urunKodu, urun4);
-            hashTablosu.UrunEkleme(urun5.urunKodu, urun5);
-            hashTablosu.UrunEkleme(urun6.urunKodu, urun6);
-            hashTablosu.UrunEkleme(urun7.urunKodu, urun7);
-            hashTablosu.UrunEkleme(urun8.urunKodu, urun8);
-            hashTablosu.UrunEkleme(urun9.urunKodu, urun9);
-            hashTablosu.UrunEkleme(urun10.urunKodu, urun10);
+            ana_hashTablosu.UrunEkleme(urun1.model, urun1);
+            ana_hashTablosu.UrunEkleme(urun2.model, urun2);
+            ana_hashTablosu.UrunEkleme(urun3.model, urun3);
+            ana_hashTablosu.UrunEkleme(urun4.model, urun4);
+            ana_hashTablosu.UrunEkleme(urun5.model, urun5);
+            ana_hashTablosu.UrunEkleme(urun6.model, urun6);
+            ana_hashTablosu.UrunEkleme(urun7.model, urun7);
+            ana_hashTablosu.UrunEkleme(urun8.model, urun8);
+            ana_hashTablosu.UrunEkleme(urun9.model, urun9);
+            ana_hashTablosu.UrunEkleme(urun10.model, urun10);
+        }
+
+
+        string aranacakUrun;
+        Urun bulunanUrun;
+
+        private void btn_UrunBul_Click(object sender, EventArgs e)
+        {
+            aranacakUrun = txt_UrunBul.Text;
+
+            bulunanUrun = ana_hashTablosu.UrunBulma(aranacakUrun);
+
+            MessageBox.Show(bulunanUrun.urunAciklamasi + "bulundu" + bulunanUrun.miktar);
+
+            txtMarka.Text = bulunanUrun.marka;
+            txtModel.Text = bulunanUrun.model;
+            txtMiktar.Text = (bulunanUrun.miktar).ToString();
+            txtMaliyet.Text = (bulunanUrun.maliyet).ToString();
+            txtSatisFiyati.Text = (bulunanUrun.satisFiyati).ToString();
+            txtUrunAciklama.Text = (bulunanUrun.urunAciklamasi).ToString();
+
+        }
+
+        private void btn_SatinAl_Click(object sender, EventArgs e)
+        {
+            bulunanUrun.miktar--;
+
+            MessageBox.Show(bulunanUrun.urunAciklamasi + "satın alındı" + bulunanUrun.miktar );
+
+            ana_market.satilanUrunsayisi++;
+            ana_market.toplamKar += (bulunanUrun.satisFiyati - bulunanUrun.maliyet);
+
+            txtMiktar.Text = bulunanUrun.miktar.ToString();
         }
     }
 }

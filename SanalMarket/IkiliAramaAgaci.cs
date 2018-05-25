@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,7 @@ namespace SanalMarket
             this.kok = kok;
         }
 
-        public void AltKategoriEkle(AltKategoriler altKategori, Heap urunler)
+        public void AltKategoriEkle(AltKategoriler altKategori, ArrayList urunler)
         {
             //Yeni eklenecek düğümün parent'ı
             IkiliAramaAgacDugumu tempParent = new IkiliAramaAgacDugumu();
@@ -34,9 +35,9 @@ namespace SanalMarket
             {
                 tempParent = tempSearch;
                 //Deger zaten var, çık.
-                if (altKategori.dugumNo == tempSearch.veri.dugumNo)
+                if (altKategori.dugumNumarasi == tempSearch.veri.dugumNumarasi)
                     return;
-                else if (altKategori.dugumNo < tempSearch.veri.dugumNo)
+                else if (altKategori.dugumNumarasi < tempSearch.veri.dugumNumarasi)
                     tempSearch = tempSearch.sol;
                 else
                     tempSearch = tempSearch.sag;
@@ -47,27 +48,33 @@ namespace SanalMarket
             if (kok == null)
                 kok = eklenecek;
 
-            else if (altKategori.dugumNo < tempParent.veri.dugumNo)
+            else if (altKategori.dugumNumarasi < tempParent.veri.dugumNumarasi)
                 tempParent.sol = eklenecek;
 
             else
                 tempParent.sag = eklenecek;
         }
 
-        public IkiliAramaAgacDugumu Ara(int anahtar)
+        public IkiliAramaAgacDugumu Ara(string urunAdi)
         {
-            return AraInt(kok, anahtar);
+            return Arama(kok, urunAdi);
         }
-        private IkiliAramaAgacDugumu AraInt(IkiliAramaAgacDugumu dugum,int anahtar)
+        private IkiliAramaAgacDugumu Arama(IkiliAramaAgacDugumu dugum, string urunAdi)
         {
+            int urunAnahtari = 0;
+            for (int i = 0; i < urunAdi.Length; i++)
+            {
+                urunAnahtari += Convert.ToInt32(urunAdi[i]);
+            }
+
             if (dugum == null)
                 return null;
-            else if ((int)dugum.veri.dugumNo == anahtar)
+            else if ((int)dugum.veri.dugumNumarasi == urunAnahtari)
                 return dugum;
-            else if ((int)dugum.veri.dugumNo > anahtar)
-                return (AraInt(dugum.sol, anahtar));
+            else if ((int)dugum.veri.dugumNumarasi > urunAnahtari)
+                return (Arama(dugum.sol, urunAdi));
             else
-                return (AraInt(dugum.sag, anahtar));
+                return (Arama(dugum.sag, urunAdi));
         }
 
 

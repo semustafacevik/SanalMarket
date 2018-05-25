@@ -18,6 +18,7 @@ namespace SanalMarket
         }
 
         public Market market;
+        public HashMap hashTablosu;
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -35,10 +36,14 @@ namespace SanalMarket
 
             if (Kullanici == "AytugOnan" && sifre == "******")
             {
+                
+                frm_PersonelEkrani personelEkrani = new frm_PersonelEkrani();
+                personelEkrani.StartPosition = FormStartPosition.CenterParent;
+                personelEkrani.market = this.market;
+                personelEkrani.hashTablosu = this.hashTablosu;
+
                 this.Hide();
-                frm_PersonelEkrani frm = new frm_PersonelEkrani();
-                frm.market = this.market;
-                frm.Show();
+                personelEkrani.ShowDialog();
             }
             else
             {

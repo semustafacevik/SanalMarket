@@ -11,6 +11,9 @@ namespace SanalMarket
     {
         public ArrayList kategoriListesi = new ArrayList();
 
+        public int satilanUrunsayisi;
+        public int toplamKar;
+
         public void AgacEkle(IkiliAramaAgaci yeniAgac)
         {
             kategoriListesi.Add(yeniAgac);
