@@ -42,7 +42,9 @@ namespace SanalMarket
             HeapDugumu yeniHP = new HeapDugumu();
             if (currentSize == 0)
             {
+                return null;
                 throw new Exception("Heap boş!");
+                
             }
             else
             {

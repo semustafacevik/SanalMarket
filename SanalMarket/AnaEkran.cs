@@ -13,7 +13,7 @@ namespace SanalMarket
 {
     public partial class frm_AnaEkran : Form
     {
-        Market ana_market = new Market();
+        Market ana_Market = new Market();
 
         ArrayList dizustu = new ArrayList();
         ArrayList masaustu = new ArrayList();
@@ -21,9 +21,9 @@ namespace SanalMarket
         ArrayList buzdolabi = new ArrayList();
         ArrayList camasir = new ArrayList();
         ArrayList gomlek = new ArrayList();
-        ArrayList pantolon = new ArrayList();
+        ArrayList pantolon = new ArrayList(); // arraylist tanımlamaları
 
-        HashMap ana_hashTablosu = new HashMap();
+        HashMap ana_HashTablosu = new HashMap(); // hashmap tanımlaması
 
         Heap minHeapDiz = new Heap(50);
         Heap minHeapMas = new Heap(50);
@@ -31,38 +31,37 @@ namespace SanalMarket
         Heap minHeapBuz = new Heap(50);
         Heap minHeapCam = new Heap(50);
         Heap minHeapGom = new Heap(50);
-        Heap minHeapPan = new Heap(50);
+        Heap minHeapPan = new Heap(50); // heap tanımlamaları
+
+        IkiliAramaAgaci bilgisayarAgaci;
+        IkiliAramaAgaci beyazEsyaAgaci;
+        IkiliAramaAgaci giyimAgaci; // ikili ağaç tanımlamaları
 
         public frm_AnaEkran()
         {
             InitializeComponent();
-            VerilerinEklenmesi();
+            VerileriEkle();
             StartPosition = FormStartPosition.CenterScreen;
         }
-
-        IkiliAramaAgaci bilgisayarAgaci;
-        IkiliAramaAgaci beyazEsyaAgaci;
-        IkiliAramaAgaci giyimAgaci;
-
-
 
         private void btnPersonelGiris_Click(object sender, EventArgs e)
         {
             frm_PersonelGirisi personelGirisformu = new frm_PersonelGirisi();
             personelGirisformu.StartPosition = FormStartPosition.CenterParent;
-            personelGirisformu.market = this.ana_market;
-            personelGirisformu.hashTablosu = this.ana_hashTablosu;
+            personelGirisformu.market = this.ana_Market;
+            personelGirisformu.hashTablosu = this.ana_HashTablosu;
             personelGirisformu.ShowDialog();
         }
 
-
-
-        private void VerilerinEklenmesi()
+        /// <summary>
+        /// Marketteki verilerin manuel olarak eklenme işlemi
+        /// </summary>
+        private void VerileriEkle()
         {
+            // Alt kategoriler
             AltKategoriler altk1 = new AltKategoriler();
             altk1.adi = "Dizüstü";
             altk1.dugumNumarasi = altk1.AgacSiralamasiIcinNo(altk1.adi);
-
 
             AltKategoriler altk2 = new AltKategoriler();
             altk2.adi = "Masaüstü";
@@ -91,7 +90,7 @@ namespace SanalMarket
             altk7.adi = "Pantolon";
             altk7.dugumNumarasi = altk7.AgacSiralamasiIcinNo(altk7.adi);
 
-
+            // Ürünler
             Urun urun1 = new Urun
             {
                 marka = "Samsung",
@@ -212,6 +211,7 @@ namespace SanalMarket
                 hangiAltkategoride = "Pantolon"
             };
 
+            // alt kategoriye ürünlerin eklenmesi
             dizustu.Add(urun1);
             masaustu.Add(urun2);
             masaustu.Add(urun3);
@@ -223,6 +223,7 @@ namespace SanalMarket
             gomlek.Add(urun9);
             pantolon.Add(urun10);
 
+            // Heap lere ürünlerin eklenmesi
             minHeapDiz.Insert(urun1);
             minHeapMas.Insert(urun2);
             minHeapMas.Insert(urun3);
@@ -234,7 +235,7 @@ namespace SanalMarket
             minHeapGom.Insert(urun9);
             minHeapPan.Insert(urun10);
 
-
+            // Ana kategoriler ve ana kategoriye alt kategorilerin ve ürünlerin eklenmesi
             bilgisayarAgaci = new IkiliAramaAgaci();
             bilgisayarAgaci.kategoriAdi = "Bilgisayar";
             bilgisayarAgaci.AltKategoriEkle(altk1, dizustu, minHeapDiz);
@@ -246,7 +247,6 @@ namespace SanalMarket
             bilgisayarAgaci.list_urunler.Add(urun4);
             bilgisayarAgaci.list_urunler.Add(urun5);
             bilgisayarAgaci.list_urunler.Add(urun6);
-
 
             beyazEsyaAgaci = new IkiliAramaAgaci();
             beyazEsyaAgaci.kategoriAdi = "Beyaz Eşya";
@@ -262,23 +262,23 @@ namespace SanalMarket
             giyimAgaci.list_urunler.Add(urun9);
             giyimAgaci.list_urunler.Add(urun10);
 
+            // Markete ağaçların eklenmesi
+            ana_Market.AgacEkle(bilgisayarAgaci);
+            ana_Market.AgacEkle(beyazEsyaAgaci);
+            ana_Market.AgacEkle(giyimAgaci);
 
-            ana_market.AgacEkle(bilgisayarAgaci);
-            ana_market.AgacEkle(beyazEsyaAgaci);
-            ana_market.AgacEkle(giyimAgaci);
-
-            ana_hashTablosu.UrunEkleme(urun1.model, urun1);
-            ana_hashTablosu.UrunEkleme(urun2.model, urun2);
-            ana_hashTablosu.UrunEkleme(urun3.model, urun3);
-            ana_hashTablosu.UrunEkleme(urun4.model, urun4);
-            ana_hashTablosu.UrunEkleme(urun5.model, urun5);
-            ana_hashTablosu.UrunEkleme(urun6.model, urun6);
-            ana_hashTablosu.UrunEkleme(urun7.model, urun7);
-            ana_hashTablosu.UrunEkleme(urun8.model, urun8);
-            ana_hashTablosu.UrunEkleme(urun9.model, urun9);
-            ana_hashTablosu.UrunEkleme(urun10.model, urun10);
+            // Hash tablasouna ürünlerin eklenmesi
+            ana_HashTablosu.UrunEkleme(urun1.model, urun1);
+            ana_HashTablosu.UrunEkleme(urun2.model, urun2);
+            ana_HashTablosu.UrunEkleme(urun3.model, urun3);
+            ana_HashTablosu.UrunEkleme(urun4.model, urun4);
+            ana_HashTablosu.UrunEkleme(urun5.model, urun5);
+            ana_HashTablosu.UrunEkleme(urun6.model, urun6);
+            ana_HashTablosu.UrunEkleme(urun7.model, urun7);
+            ana_HashTablosu.UrunEkleme(urun8.model, urun8);
+            ana_HashTablosu.UrunEkleme(urun9.model, urun9);
+            ana_HashTablosu.UrunEkleme(urun10.model, urun10);
         }
-
 
         string aranacakUrun;
         Urun bulunanUrun;
@@ -287,16 +287,21 @@ namespace SanalMarket
         {
             aranacakUrun = txt_UrunBul.Text;
 
-            bulunanUrun = ana_hashTablosu.UrunBulma(aranacakUrun);
+            bulunanUrun = ana_HashTablosu.UrunBulma(aranacakUrun);
 
-            MessageBox.Show(bulunanUrun.urunAciklamasi + "bulundu" + bulunanUrun.miktar);
+            if (bulunanUrun != null)
+            {
+                MessageBox.Show(bulunanUrun.urunAciklamasi + " bulundu. Miktar: " + bulunanUrun.miktar + " adet");
 
-            txtMarka.Text = bulunanUrun.marka;
-            txtModel.Text = bulunanUrun.model;
-            txtMiktar.Text = (bulunanUrun.miktar).ToString();
-            txtMaliyet.Text = (bulunanUrun.maliyet).ToString();
-            txtSatisFiyati.Text = (bulunanUrun.satisFiyati).ToString();
-            txtUrunAciklama.Text = (bulunanUrun.urunAciklamasi).ToString();
+                txtMarka.Text = bulunanUrun.marka;
+                txtModel.Text = bulunanUrun.model;
+                txtMiktar.Text = (bulunanUrun.miktar).ToString();
+                txtMaliyet.Text = (bulunanUrun.maliyet).ToString();
+                txtSatisFiyati.Text = (bulunanUrun.satisFiyati).ToString();
+                txtUrunAciklama.Text = (bulunanUrun.urunAciklamasi).ToString();
+            }
+            else
+                MessageBox.Show("Aranan modele ait herhangi bir ürün bulunamadı. \r\nLütfen girdiğiniz model adını kontrol ediniz.");
 
         }
 
@@ -304,10 +309,10 @@ namespace SanalMarket
         {
             bulunanUrun.miktar--;
 
-            MessageBox.Show(bulunanUrun.urunAciklamasi + "satın alındı" + bulunanUrun.miktar);
+            MessageBox.Show(bulunanUrun.urunAciklamasi + " satın alındı. Kalan miktar : " + bulunanUrun.miktar + " adet");
 
-            ana_market.satilanUrunsayisi++;
-            ana_market.toplamKar += (bulunanUrun.satisFiyati - bulunanUrun.maliyet);
+            ana_Market.satilanUrunsayisi++;
+            ana_Market.toplamKar += (bulunanUrun.satisFiyati - bulunanUrun.maliyet);
 
             txtMiktar.Text = bulunanUrun.miktar.ToString();
         }
@@ -316,14 +321,17 @@ namespace SanalMarket
         {
             int minDeger = Convert.ToInt32(txt_min.Text);
             int maxDeger = Convert.ToInt32(txt_max.Text);
-
-            foreach (Urun urun in ana_hashTablosu.urunler)
+            bool bulundu = false;
+            foreach (Urun urun in ana_HashTablosu.urunler)
             {
                 if (urun.satisFiyati > minDeger && urun.satisFiyati < maxDeger)
                 {
-                    MessageBox.Show(urun.urunAciklamasi + Environment.NewLine + urun.satisFiyati);
+                    MessageBox.Show(urun.urunAciklamasi + "\r\nSatış fiyatı: " + urun.satisFiyati);
+                    bulundu = true;
                 }
             }
+            if(!bulundu) 
+                MessageBox.Show("Belirtilen aralıkta ürün bulunamadı.");
         }
 
         private void btn_KatYaz_Click(object sender, EventArgs e)
@@ -390,7 +398,7 @@ namespace SanalMarket
         {
             int kacKere = Convert.ToInt32(txt_KacTane.Text);
             HeapDugumu urun;
-            ana_market.satilanUrunsayisi += kacKere;
+            ana_Market.satilanUrunsayisi += kacKere;
 
 
             switch (cmb_EnUcuzKat.SelectedIndex)
@@ -399,10 +407,13 @@ namespace SanalMarket
                     {
                         for (int i = 0; i < kacKere; i++)
                         {
+
                             urun = minHeapDiz.RemoveMin();
+                            if (urun == null)
+                                break;
                             MessageBox.Show(urun.Deger.urunAciklamasi);
-                            ana_hashTablosu.UrunSilme(urun.Deger.model);
-                            ana_market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
+                            ana_HashTablosu.UrunSilme(urun.Deger.model);
+                            ana_Market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
 
                         }
                     }
@@ -413,9 +424,11 @@ namespace SanalMarket
                         for (int i = 0; i < kacKere; i++)
                         {
                             urun = minHeapMas.RemoveMin();
+                            if (urun == null)
+                                break;
                             MessageBox.Show(urun.Deger.urunAciklamasi);
-                            ana_hashTablosu.UrunSilme(urun.Deger.model);
-                            ana_market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
+                            ana_HashTablosu.UrunSilme(urun.Deger.model);
+                            ana_Market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
 
                         }
                     }
@@ -425,9 +438,11 @@ namespace SanalMarket
                         for (int i = 0; i < kacKere; i++)
                         {
                             urun = minHeapOyu.RemoveMin();
+                            if (urun == null)
+                                break;
                             MessageBox.Show(urun.Deger.urunAciklamasi);
-                            ana_hashTablosu.UrunSilme(urun.Deger.model);
-                            ana_market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
+                            ana_HashTablosu.UrunSilme(urun.Deger.model);
+                            ana_Market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
 
                         }
                     }
@@ -437,9 +452,11 @@ namespace SanalMarket
                         for (int i = 0; i < kacKere; i++)
                         {
                             urun = minHeapBuz.RemoveMin();
+                            if (urun == null)
+                                break;
                             MessageBox.Show(urun.Deger.urunAciklamasi);
-                            ana_hashTablosu.UrunSilme(urun.Deger.model);
-                            ana_market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
+                            ana_HashTablosu.UrunSilme(urun.Deger.model);
+                            ana_Market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
 
                         }
                     }
@@ -449,9 +466,11 @@ namespace SanalMarket
                         for (int i = 0; i < kacKere; i++)
                         {
                             urun = minHeapCam.RemoveMin();
+                            if (urun == null)
+                                break;
                             MessageBox.Show(urun.Deger.urunAciklamasi);
-                            ana_hashTablosu.UrunSilme(urun.Deger.model);
-                            ana_market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
+                            ana_HashTablosu.UrunSilme(urun.Deger.model);
+                            ana_Market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
 
                         }
                     }
@@ -461,9 +480,11 @@ namespace SanalMarket
                         for (int i = 0; i < kacKere; i++)
                         {
                             urun = minHeapGom.RemoveMin();
+                            if (urun == null)
+                                break;
                             MessageBox.Show(urun.Deger.urunAciklamasi);
-                            ana_hashTablosu.UrunSilme(urun.Deger.model);
-                            ana_market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
+                            ana_HashTablosu.UrunSilme(urun.Deger.model);
+                            ana_Market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
 
                         }
                     }
@@ -473,9 +494,11 @@ namespace SanalMarket
                         for (int i = 0; i < kacKere; i++)
                         {
                             urun = minHeapPan.RemoveMin();
+                            if (urun == null)
+                                break;
                             MessageBox.Show(urun.Deger.urunAciklamasi);
-                            ana_hashTablosu.UrunSilme(urun.Deger.model);
-                            ana_market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
+                            ana_HashTablosu.UrunSilme(urun.Deger.model);
+                            ana_Market.toplamKar += (urun.Deger.satisFiyati - urun.Deger.maliyet);
 
                         }
                     }

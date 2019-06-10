@@ -215,11 +215,11 @@
             // 
             // btn_AralikBul
             // 
-            this.btn_AralikBul.Location = new System.Drawing.Point(586, 74);
+            this.btn_AralikBul.Location = new System.Drawing.Point(543, 74);
             this.btn_AralikBul.Name = "btn_AralikBul";
-            this.btn_AralikBul.Size = new System.Drawing.Size(75, 23);
+            this.btn_AralikBul.Size = new System.Drawing.Size(161, 23);
             this.btn_AralikBul.TabIndex = 32;
-            this.btn_AralikBul.Text = "AralikBul";
+            this.btn_AralikBul.Text = "Belirtilen Aralıktaki Ürünleri Bul";
             this.btn_AralikBul.UseVisualStyleBackColor = true;
             this.btn_AralikBul.Click += new System.EventHandler(this.btn_AralikBul_Click);
             // 

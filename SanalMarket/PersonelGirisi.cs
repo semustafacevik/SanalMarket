@@ -20,11 +20,6 @@ namespace SanalMarket
         public Market market;
         public HashMap hashTablosu;
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnGiris_Click(object sender, EventArgs e)
         {
             string Kullanici;

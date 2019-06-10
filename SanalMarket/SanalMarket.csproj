@@ -58,18 +58,6 @@
     <Compile Include="Heap.cs" />
     <Compile Include="IkiliAramaAgacDugumu.cs" />
     <Compile Include="IkiliAramaAgaci.cs" />
-    <Compile Include="KategoriEkle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KategoriEkle.Designer.cs">
-      <DependentUpon>KategoriEkle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MaliRapor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MaliRapor.Designer.cs">
-      <DependentUpon>MaliRapor.cs</DependentUpon>
-    </Compile>
     <Compile Include="Market.cs" />
     <Compile Include="PersonelEkrani.cs">
       <SubType>Form</SubType>
@@ -88,12 +76,6 @@
     <Compile Include="Urun.cs" />
     <EmbeddedResource Include="AnaEkran.resx">
       <DependentUpon>AnaEkran.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KategoriEkle.resx">
-      <DependentUpon>KategoriEkle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MaliRapor.resx">
-      <DependentUpon>MaliRapor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonelEkrani.resx">
       <DependentUpon>PersonelEkrani.cs</DependentUpon>

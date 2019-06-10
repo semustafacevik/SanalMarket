@@ -18,6 +18,10 @@ namespace SanalMarket
             GerekliGizlemeler();
             grb_Kategori.Hide();
         }
+
+        /// <summary>
+        /// Form üzerindeki araçların gizlenip/gösterilmesi işlemleri
+        /// </summary>
         private void GerekliGizlemeler()
         {
             cmb_KategoriSecim.Hide();
@@ -93,7 +97,11 @@ namespace SanalMarket
         }
 
 
-
+        /// <summary>
+        /// Ürün ekleme - silme - arama - güncelleme için ilgili metotlar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UrunEklemeyeTiklama(object sender, EventArgs e)
         {
             Urun yeniUrun = new Urun();
@@ -113,6 +121,9 @@ namespace SanalMarket
                     kategori.Ara(hangiAltKategori).urunler.Add(yeniUrun);
 
                     hashTablosu.UrunEkleme(yeniUrun.model, yeniUrun);
+
+                    MessageBox.Show(yeniUrun.urunAciklamasi + " eklendi.");
+                    GerekliGizlemeler();
                 }
             }
 
@@ -138,7 +149,7 @@ namespace SanalMarket
                     }
                 }
                 else
-                    MessageBox.Show("Ürün bulunamadi");
+                    MessageBox.Show("Ürün bulunamadı.");
             }
             else
                 MessageBox.Show("Ürün bulunamadi");
@@ -201,6 +212,8 @@ namespace SanalMarket
                             hashTablosu.UrunEkleme(yeniUrun.model, yeniUrun);
 
                             MessageBox.Show(yeniUrun.urunAciklamasi + " güncellendi");
+
+                            GerekliGizlemeler();
                         }
 
                     }
